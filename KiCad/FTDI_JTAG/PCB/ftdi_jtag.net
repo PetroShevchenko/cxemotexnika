@@ -1,0 +1,691 @@
+# EESchema Netlist Version 1.1 created  16.06.2010 09:53:43
+(
+ ( /4BD18381 $noname  R22 10k {Lib=R0805}
+  (    1 +3.3V )
+  (    2 /SI/WUA )
+ )
+ ( /4BD18044 $noname  X4 BH-20 {Lib=BH-20}
+  (    1 /TCK )
+  (    2 /TDI )
+  (    3 /TDO )
+  (    4 /TMS )
+  (    5 /NTRST )
+  (    6 /RTCK )
+  (    7 /RST )
+  (    8 /DBGRQ )
+  (    9 ? )
+  (   10 ? )
+  (   11 /SI/WUA )
+  (   12 ? )
+  (   13 /DBGACK )
+  (   14 /ACBUS1 )
+  (   15 /RxLED )
+  (   16 /TxLED )
+  (   17 +5V )
+  (   18 +3.3V )
+  (   19 GND )
+  (   20 GND )
+ )
+ ( /4BD17C02 $noname  R21 470R {Lib=R0805}
+  (    1 +5V )
+  (    2 N-000032 )
+ )
+ ( /4BD0384B $noname  HL4 RED {Lib=LED0805}
+  (    1 N-000064 )
+  (    2 /T_GND )
+ )
+ ( /4BD0382F $noname  R12 470R {Lib=R0805}
+  (    1 /T_VCC )
+  (    2 N-000064 )
+ )
+ ( /4BD0370A $noname  R11 470R {Lib=R0805}
+  (    1 N-000072 )
+  (    2 /RxLED )
+ )
+ ( /4BD036FD $noname  HL3 GREEN {Lib=LED0805}
+  (    1 +3.3V )
+  (    2 N-000072 )
+ )
+ ( /4BD03648 $noname  HL2 RED {Lib=LED0805}
+  (    1 +3.3V )
+  (    2 N-000069 )
+ )
+ ( /4BD03639 $noname  R10 470R {Lib=R0805}
+  (    1 N-000069 )
+  (    2 /TxLED )
+ )
+ ( /4BD0359F $noname  HL1 RED {Lib=LED0805}
+  (    1 N-000070 )
+  (    2 GND )
+ )
+ ( /4BD031E5 $noname  R9 1k {Lib=R0805}
+  (    1 +5V )
+  (    2 N-000070 )
+ )
+ ( /4BD03097 $noname  C16 10uF_10V {Lib=TANTAL_A}
+  (    1 +5V )
+  (    2 GND )
+ )
+ ( /4BD03044 $noname  C15 0,1uF {Lib=SMD0805}
+  (    1 +5V )
+  (    2 GND )
+ )
+ ( /4BD02D49 $noname  C11 47pF {Lib=SMD0805}
+  (    1 N-000063 )
+  (    2 GND )
+ )
+ ( /4BD02D42 $noname  C8 47pF {Lib=SMD0805}
+  (    1 N-000017 )
+  (    2 GND )
+ )
+ ( /4BD02D29 $noname  R6 27R {Lib=R0805}
+  (    1 N-000017 )
+  (    2 /USBDP )
+ )
+ ( /4BD02D1E $noname  R5 27R {Lib=R0805}
+  (    1 N-000063 )
+  (    2 /USBDM )
+ )
+ ( /4BD02659 USBB-1J  X1 USBB-1J {Lib=USBB-1J}
+  (    1 +5V )
+  (    2 N-000063 )
+  (    3 N-000017 )
+  (    4 GND )
+  (    5 GND )
+  (    6 GND )
+ )
+ ( /4BD0222B $noname  C13 0,1uF {Lib=SMD0805}
+  (    1 +3.3V )
+  (    2 GND )
+ )
+ ( /4BD0221E $noname  C12 10uF_10V {Lib=TANTAL_A}
+  (    1 +3.3V )
+  (    2 GND )
+ )
+ ( /4BD02208 $noname  C3 10uF_10V {Lib=TANTAL_A}
+  (    1 +5V )
+  (    2 GND )
+ )
+ ( /4BD02082 $noname  DA1 LM1117MPX-3.3 {Lib=LM1117MPX-3.3}
+  (    1 GND )
+  (    2 +3.3V )
+  (    3 +5V )
+  (    4 +3.3V )
+ )
+ ( /4BCC42A8 $noname  R20 27R {Lib=R0805}
+  (    1 N-000012 )
+  (    2 /I_DBGACK )
+ )
+ ( /4BCC42A2 $noname  R19 27R {Lib=R0805}
+  (    1 N-000014 )
+  (    2 /I_DBGRQ )
+ )
+ ( /4BCC4299 $noname  R18 27R {Lib=R0805}
+  (    1 N-000013 )
+  (    2 /I_RST )
+ )
+ ( /4BCC4278 $noname  R17 27R {Lib=R0805}
+  (    1 N-000015 )
+  (    2 /I_NTRST )
+ )
+ ( /4BC87752 $noname  R13 27R {Lib=R0805}
+  (    1 N-000016 )
+  (    2 /I_TCK )
+ )
+ ( /4BC87748 $noname  R16 27R {Lib=R0805}
+  (    1 N-000020 )
+  (    2 /I_TDO )
+ )
+ ( /4BC87743 $noname  R15 27R {Lib=R0805}
+  (    1 N-000001 )
+  (    2 /I_TDI )
+ )
+ ( /4BC87739 $noname  R14 27R {Lib=R0805}
+  (    1 N-000023 )
+  (    2 /I_TMS )
+ )
+ ( /4BC876BD $noname  C14 0,1uF {Lib=SMD0805}
+  (    1 +5V )
+  (    2 GND )
+ )
+ ( /4BC87573 $noname  R1 10k {Lib=R0805}
+  (    1 +5V )
+  (    2 N-000065 )
+ )
+ ( /4BC874F7 $noname  R3 2k2 {Lib=R0805}
+  (    1 N-000065 )
+  (    2 /EEDATA )
+ )
+ ( /4BC873D5 $noname  DD2 AT93C46 {Lib=AT93C46}
+  (    1 /EECS )
+  (    2 /EESK )
+  (    3 /EEDATA )
+  (    4 N-000065 )
+  (    5 GND )
+  (    6 +5V )
+  (    7 ? )
+  (    8 +5V )
+ )
+ ( /4BC86B7D $noname  C22 0,1uF {Lib=SMD0805}
+  (    1 /T_VCC )
+  (    2 /T_GND )
+ )
+ ( /4BC86754 $noname  C18 0,1uF {Lib=SMD0805}
+  (    1 GND )
+  (    2 +3.3V )
+ )
+ ( /4BC8608E $noname  C21 0,1uF {Lib=SMD0805}
+  (    1 /T_VCC )
+  (    2 /T_GND )
+ )
+ ( /4BC86082 $noname  C20 0,1uF {Lib=SMD0805}
+  (    1 /T_VCC )
+  (    2 /T_GND )
+ )
+ ( /4BC85FE5 $noname  C19 0,1uF {Lib=SMD0805}
+  (    1 /T_VCC )
+  (    2 /T_GND )
+ )
+ ( /4BC85A4F $noname  DD3 ADUM1401BRW {Lib=ADUM1401BRW}
+  (    1 +3.3V )
+  (    2 GND )
+  (    3 /TCK )
+  (    4 /TMS )
+  (    5 /TDI )
+  (    6 /TDO )
+  (    7 +3.3V )
+  (    8 GND )
+  (    9 /T_GND )
+  (   10 /T_VCC )
+  (   11 N-000020 )
+  (   12 N-000001 )
+  (   13 N-000023 )
+  (   14 N-000016 )
+  (   15 /T_GND )
+  (   16 /T_VCC )
+ )
+ ( /4BC85D4B $noname  C17 0,1uF {Lib=SMD0805}
+  (    1 GND )
+  (    2 +3.3V )
+ )
+ ( /4BC85A5A $noname  DD4 ADUM1401BRW {Lib=ADUM1401BRW}
+  (    1 +3.3V )
+  (    2 GND )
+  (    3 /NTRST )
+  (    4 /RST )
+  (    5 /DBGRQ )
+  (    6 /DBGACK )
+  (    7 +3.3V )
+  (    8 GND )
+  (    9 /T_GND )
+  (   10 /T_VCC )
+  (   11 N-000012 )
+  (   12 N-000014 )
+  (   13 N-000013 )
+  (   14 N-000015 )
+  (   15 /T_GND )
+  (   16 /T_VCC )
+ )
+ ( /4BC83FAC $noname  R8 10k {Lib=R0805}
+  (    1 +3.3V )
+  (    2 /SI/WUB )
+ )
+ ( /4BC83B34 $noname  X3 BH-20 {Lib=BH-20}
+  (    1 /T_VCC )
+  (    2 /T_VCC )
+  (    3 /I_NTRST )
+  (    4 /T_GND )
+  (    5 /I_TDI )
+  (    6 /T_GND )
+  (    7 /I_TMS )
+  (    8 /T_GND )
+  (    9 /I_TCK )
+  (   10 /T_GND )
+  (   11 ? )
+  (   12 /T_GND )
+  (   13 /I_TDO )
+  (   14 /T_GND )
+  (   15 /I_RST )
+  (   16 /T_GND )
+  (   17 /I_DBGRQ )
+  (   18 /T_GND )
+  (   19 /I_DBGACK )
+  (   20 /T_GND )
+ )
+ ( /4BC83B2B $noname  X2 BH-20 {Lib=BH-20}
+  (    1 /BDBUS0 )
+  (    2 /BDBUS1 )
+  (    3 /BDBUS2 )
+  (    4 /BDBUS3 )
+  (    5 /BDBUS4 )
+  (    6 /BDBUS5 )
+  (    7 /BDBUS6 )
+  (    8 /BDBUS7 )
+  (    9 ? )
+  (   10 ? )
+  (   11 /SI/WUB )
+  (   12 ? )
+  (   13 /BCBUS0 )
+  (   14 /BCBUS1 )
+  (   15 /BCBUS2 )
+  (   16 /BCBUS3 )
+  (   17 +5V )
+  (   18 +3.3V )
+  (   19 GND )
+  (   20 GND )
+ )
+ ( /4BC83156 $noname  R2 10k {Lib=R0805}
+  (    1 +5V )
+  (    2 /RESET# )
+ )
+ ( /4BC82EB3 $noname  R4 1k5 {Lib=R0805}
+  (    1 /USBDP )
+  (    2 N-000034 )
+ )
+ ( /4BC82CA8 $noname  C2 22pF {Lib=SMD0805}
+  (    1 GND )
+  (    2 N-000029 )
+ )
+ ( /4BC82CA3 $noname  C1 22pF {Lib=SMD0805}
+  (    1 GND )
+  (    2 N-000028 )
+ )
+ ( /4BC82C7E $noname  ZQ1 6MHz {Lib=QUARC}
+  (    1 N-000028 )
+  (    2 N-000029 )
+ )
+ ( /4BC82B9B $noname  C4 0,1uF {Lib=SMD0805}
+  (    1 +3.3V )
+  (    2 GND )
+ )
+ ( /4BC82AF9 $noname  C10 0,1uF {Lib=SMD0805}
+  (    1 N-000032 )
+  (    2 GND )
+ )
+ ( /4BC82AF0 $noname  C6 0,1uF {Lib=SMD0805}
+  (    1 +5V )
+  (    2 GND )
+ )
+ ( /4BC82AE9 $noname  C5 0,1uF {Lib=SMD0805}
+  (    1 +3.3V )
+  (    2 GND )
+ )
+ ( /4BC82A8B $noname  C9 0,1uF {Lib=SMD0805}
+  (    1 +5V )
+  (    2 GND )
+ )
+ ( /4BC822B5 $noname  C7 33nF {Lib=SMD0805}
+  (    1 GND )
+  (    2 N-000035 )
+ )
+ ( /4BC81BA6 $noname  DD1 FT2232D {Lib=FT2232D}
+  (    1 /EESK )
+  (    2 /EEDATA )
+  (    3 +5V )
+  (    4 /RESET# )
+  (    5 N-000034 )
+  (    6 N-000035 )
+  (    7 /USBDP )
+  (    8 /USBDM )
+  (    9 GND )
+  (   10 /SI/WUA )
+  (   11 /TxLED )
+  (   12 /RxLED )
+  (   13 /ACBUS1 )
+  (   14 +3.3V )
+  (   15 /DBGACK )
+  (   16 /DBGRQ )
+  (   17 /RST )
+  (   18 GND )
+  (   19 /RTCK )
+  (   20 /NTRST )
+  (   21 /TMS )
+  (   22 /TDO )
+  (   23 /TDI )
+  (   24 /TCK )
+  (   25 GND )
+  (   26 /SI/WUB )
+  (   27 /BCBUS3 )
+  (   28 /BCBUS2 )
+  (   29 /BCBUS1 )
+  (   30 /BCBUS0 )
+  (   31 +3.3V )
+  (   32 /BDBUS7 )
+  (   33 /BDBUS6 )
+  (   34 GND )
+  (   35 /BDBUS5 )
+  (   36 /BDBUS4 )
+  (   37 /BDBUS3 )
+  (   38 /BDBUS2 )
+  (   39 /BDBUS1 )
+  (   40 /BDBUS0 )
+  (   41 ? )
+  (   42 +5V )
+  (   43 N-000029 )
+  (   44 N-000028 )
+  (   45 GND )
+  (   46 N-000032 )
+  (   47 GND )
+  (   48 /EECS )
+ )
+)
+*
+{ Allowed footprints by component:
+$component X1
+ USBB-1J*
+$endlist
+$endfootprintlist
+}
+{ Pin List by Nets
+Net 1 "" ""
+ R15 1
+ DD3 12
+Net 2 "/TDO" "TDO"
+ DD1 22
+ X4 3
+ DD3 6
+Net 3 "/T_VCC" "T_VCC"
+ DD4 10
+ C22 1
+ C21 1
+ DD4 16
+ X3 2
+ X3 1
+ C19 1
+ DD3 16
+ DD3 10
+ C20 1
+ R12 1
+Net 4 "/TDI" "TDI"
+ DD1 23
+ DD3 5
+ X4 2
+Net 5 "/TMS" "TMS"
+ DD3 4
+ X4 4
+ DD1 21
+Net 6 "/TCK" "TCK"
+ X4 1
+ DD1 24
+ DD3 3
+Net 7 "/NTRST" "NTRST"
+ X4 5
+ DD4 3
+ DD1 20
+Net 8 "/RST" "RST"
+ X4 7
+ DD4 4
+ DD1 17
+Net 9 "/DBGRQ" "DBGRQ"
+ DD1 16
+ DD4 5
+ X4 8
+Net 10 "/DBGACK" "DBGACK"
+ DD1 15
+ X4 13
+ DD4 6
+Net 11 "+3.3V" "+3.3V"
+ HL2 1
+ R8 1
+ C5 1
+ C4 1
+ R22 1
+ HL3 1
+ X2 18
+ DD1 31
+ X4 18
+ DD1 14
+ C17 2
+ DD4 1
+ DD4 7
+ C13 1
+ C12 1
+ DA1 2
+ DA1 4
+ DD3 7
+ DD3 1
+ C18 2
+Net 12 "" ""
+ DD4 11
+ R20 1
+Net 13 "" ""
+ R18 1
+ DD4 13
+Net 14 "" ""
+ R19 1
+ DD4 12
+Net 15 "" ""
+ DD4 14
+ R17 1
+Net 16 "" ""
+ DD3 14
+ R13 1
+Net 17 "" ""
+ R6 1
+ X1 3
+ C8 1
+Net 19 "/I_TCK" "I_TCK"
+ X3 9
+ R13 2
+Net 20 "" ""
+ DD3 11
+ R16 1
+Net 21 "/I_TDO" "I_TDO"
+ R16 2
+ X3 13
+Net 22 "/I_TDI" "I_TDI"
+ R15 2
+ X3 5
+Net 23 "" ""
+ R14 1
+ DD3 13
+Net 24 "/I_TMS" "I_TMS"
+ X3 7
+ R14 2
+Net 25 "/EECS" "EECS"
+ DD2 1
+ DD1 48
+Net 26 "/EESK" "EESK"
+ DD1 1
+ DD2 2
+Net 27 "/EEDATA" "EEDATA"
+ R3 2
+ DD2 3
+ DD1 2
+Net 28 "" ""
+ ZQ1 1
+ DD1 44
+ C1 2
+Net 29 "" ""
+ DD1 43
+ ZQ1 2
+ C2 2
+Net 30 "+5V" "+5V"
+ DD2 8
+ R2 1
+ R21 1
+ C9 1
+ C6 1
+ DD1 3
+ X2 17
+ X4 17
+ C15 1
+ C16 1
+ R9 1
+ X1 1
+ DA1 3
+ DD2 6
+ DD1 42
+ C3 1
+ C14 1
+ R1 1
+Net 31 "/RESET#" "RESET#"
+ R2 2
+ DD1 4
+Net 32 "" ""
+ C10 1
+ R21 2
+ DD1 46
+Net 33 "/RTCK" "RTCK"
+ DD1 19
+ X4 6
+Net 34 "" ""
+ R4 2
+ DD1 5
+Net 35 "" ""
+ DD1 6
+ C7 2
+Net 36 "/SI/WUA" "SI/WUA"
+ DD1 10
+ R22 2
+ X4 11
+Net 37 "/TxLED" "TxLED"
+ DD1 11
+ X4 16
+ R10 2
+Net 39 "/RxLED" "RxLED"
+ R11 2
+ DD1 12
+ X4 15
+Net 40 "/ACBUS1" "ACBUS1"
+ X4 14
+ DD1 13
+Net 41 "/I_NTRST" "I_NTRST"
+ R17 2
+ X3 3
+Net 43 "/I_RST" "I_RST"
+ R18 2
+ X3 15
+Net 44 "/I_DBGRQ" "I_DBGRQ"
+ R19 2
+ X3 17
+Net 45 "/I_DBGACK" "I_DBGACK"
+ X3 19
+ R20 2
+Net 46 "/BDBUS0" "BDBUS0"
+ DD1 40
+ X2 1
+Net 47 "/BDBUS1" "BDBUS1"
+ X2 2
+ DD1 39
+Net 48 "/BDBUS2" "BDBUS2"
+ DD1 38
+ X2 3
+Net 49 "/BDBUS3" "BDBUS3"
+ X2 4
+ DD1 37
+Net 50 "/BDBUS4" "BDBUS4"
+ X2 5
+ DD1 36
+Net 51 "/BDBUS5" "BDBUS5"
+ X2 6
+ DD1 35
+Net 52 "/BDBUS6" "BDBUS6"
+ DD1 33
+ X2 7
+Net 53 "/BDBUS7" "BDBUS7"
+ DD1 32
+ X2 8
+Net 56 "/SI/WUB" "SI/WUB"
+ DD1 26
+ X2 11
+ R8 2
+Net 58 "/BCBUS0" "BCBUS0"
+ DD1 30
+ X2 13
+Net 59 "/BCBUS1" "BCBUS1"
+ DD1 29
+ X2 14
+Net 60 "/BCBUS2" "BCBUS2"
+ X2 15
+ DD1 28
+Net 61 "/BCBUS3" "BCBUS3"
+ DD1 27
+ X2 16
+Net 62 "/USBDP" "USBDP"
+ DD1 7
+ R6 2
+ R4 1
+Net 63 "" ""
+ X1 2
+ R5 1
+ C11 1
+Net 64 "" ""
+ HL4 1
+ R12 2
+Net 65 "" ""
+ R1 2
+ R3 1
+ DD2 4
+Net 69 "" ""
+ R10 1
+ HL2 2
+Net 70 "" ""
+ HL1 1
+ R9 2
+Net 71 "/USBDM" "USBDM"
+ DD1 8
+ R5 2
+Net 72 "" ""
+ R11 1
+ HL3 2
+Net 73 "GND" "GND"
+ HL1 2
+ C16 2
+ C15 2
+ X4 19
+ C4 2
+ C10 2
+ C6 2
+ C5 2
+ C9 2
+ DD1 34
+ DD1 25
+ DD1 45
+ DD1 47
+ DD1 18
+ C7 1
+ DD1 9
+ X2 20
+ X2 19
+ DD3 2
+ DD3 8
+ C17 1
+ C18 1
+ DD4 2
+ DD4 8
+ C13 2
+ C12 2
+ C3 2
+ DA1 1
+ C1 1
+ C2 1
+ C14 2
+ DD2 5
+ X1 6
+ X1 5
+ X1 4
+ C8 2
+ C11 2
+ X4 20
+Net 74 "/T_GND" "T_GND"
+ DD4 9
+ DD4 15
+ C21 2
+ DD3 15
+ DD3 9
+ C19 2
+ C20 2
+ X3 4
+ X3 6
+ X3 8
+ X3 10
+ X3 20
+ X3 12
+ X3 14
+ X3 16
+ X3 18
+ HL4 2
+ C22 2
+}
+#End
