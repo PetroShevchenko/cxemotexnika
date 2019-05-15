@@ -21,6 +21,11 @@ int main(int argc, char ** argv)
 	struct hostent *hp;
 	char buf[80]="Hello, NUCLEO_F429ZI board!";
 
+	if (argc != 2) {
+		perror("wrong number of arguments");
+		exit(1);
+
+	}
 	if((hp=gethostbyname(argv[1]))==0) {
 		perror("socket() error");
 		exit(3);
