@@ -10,5 +10,8 @@ Examples - examples of source code.
 
 KiCad    - project files for KiCad EDA.
 
+# License
+See LICENSE file
+
 # Note: 
 Everything from this repository is provided 'as is' , with no warranty.
