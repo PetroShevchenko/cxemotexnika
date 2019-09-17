@@ -1,0 +1,305 @@
+diff --git a/examples/client/CMakeLists.txt b/examples/client/CMakeLists.txt
+index add9860..04e3f4f 100644
+--- a/examples/client/CMakeLists.txt
++++ b/examples/client/CMakeLists.txt
+@@ -31,6 +31,7 @@ SET(SOURCES
+     ${CMAKE_CURRENT_LIST_DIR}/object_connectivity_stat.c
+     ${CMAKE_CURRENT_LIST_DIR}/object_access_control.c
+     ${CMAKE_CURRENT_LIST_DIR}/test_object.c
++    ${CMAKE_CURRENT_LIST_DIR}/object_light_control.c
+     )
+ 
+ add_executable(${PROJECT_NAME} ${SOURCES} ${WAKAAMA_SOURCES} ${SHARED_SOURCES})
+diff --git a/examples/client/lwm2mclient.c b/examples/client/lwm2mclient.c
+index c566aed..c49190f 100644
+--- a/examples/client/lwm2mclient.c
++++ b/examples/client/lwm2mclient.c
+@@ -87,7 +87,7 @@
+ int g_reboot = 0;
+ static int g_quit = 0;
+ 
+-#define OBJ_COUNT 9
++#define OBJ_COUNT 10
+ lwm2m_object_t * objArray[OBJ_COUNT];
+ 
+ // only backup security and server objects
+@@ -1104,6 +1104,13 @@ int main(int argc, char *argv[])
+         fprintf(stderr, "Failed to create Access Control ACL resource for serverId: 999\r\n");
+         return -1;
+     }
++    objArray[9] = get_light_control_object();
++    if (NULL == objArray[9])
++    {
++        fprintf(stderr, "Failed to create light control object\r\n");
++        return -1;
++    }
++
+     /*
+      * The liblwm2m library is now initialized with the functions that will be in
+      * charge of communication
+@@ -1387,6 +1394,7 @@ int main(int argc, char *argv[])
+     free_object_conn_m(objArray[6]);
+     free_object_conn_s(objArray[7]);
+     acl_ctrl_free_object(objArray[8]);
++    free_light_control_object(objArray[9]);
+ 
+ #ifdef MEMORY_TRACE
+     if (g_quit == 1)
+diff --git a/examples/client/lwm2mclient.h b/examples/client/lwm2mclient.h
+index 0f7e657..3f2a73f 100644
+--- a/examples/client/lwm2mclient.h
++++ b/examples/client/lwm2mclient.h
+@@ -58,6 +58,13 @@ lwm2m_object_t * get_test_object(void);
+ void free_test_object(lwm2m_object_t * object);
+ void display_test_object(lwm2m_object_t * objectP);
+ /*
++ * object_light_control.c
++ */
++#define LIGHT_CONTROL_OBJECT_ID 3311
++lwm2m_object_t * get_light_control_object(void);
++void free_light_control_object(lwm2m_object_t * object);
++void display_light_control_object(lwm2m_object_t * objectP);
++/*
+  * object_server.c
+  */
+ lwm2m_object_t * get_server_object(int serverId, const char* binding, int lifetime, bool storing);
+diff --git a/examples/client/object_light_control.c b/examples/client/object_light_control.c
+new file mode 100644
+index 0000000..cbf2482
+--- /dev/null
++++ b/examples/client/object_light_control.c
+@@ -0,0 +1,234 @@
++#include "liblwm2m.h"
++#include "lwm2mclient.h"
++
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <ctype.h>
++
++enum {
++	LIGHT_CONTROL_INSTANCE_PARAMETERS = 8
++};
++
++
++typedef struct light_control_instance_s {
++	struct light_control_instance_s * next;
++	uint16_t short_id;
++	bool state;
++	uint8_t dimmer;
++	uint32_t on_time;
++	double comulative_active_power;
++	double power_factor;
++	const char * colour;
++	const char * sensor_units;
++	const char * application_type;
++}light_control_instance_t;
++
++static uint8_t prv_light_control_read(uint16_t instanceId,
++                                 int * numDataP,
++                                 lwm2m_data_t ** dataArrayP,
++                                 lwm2m_object_t * objectP)
++{
++    int i;
++    uint8_t result;
++    light_control_instance_t * targetP;
++    
++    targetP = (light_control_instance_t *)lwm2m_list_find(objectP->instanceList, instanceId);
++    if (NULL == targetP) return COAP_404_NOT_FOUND;   
++
++    if (*numDataP == 0)
++    {
++        *dataArrayP = lwm2m_data_new(LIGHT_CONTROL_INSTANCE_PARAMETERS);
++        if (*dataArrayP == NULL) return COAP_500_INTERNAL_SERVER_ERROR;
++        *numDataP = LIGHT_CONTROL_INSTANCE_PARAMETERS;
++        (*dataArrayP)[0].id = 5850;
++        (*dataArrayP)[1].id = 5851;
++        (*dataArrayP)[2].id = 5852;
++        (*dataArrayP)[3].id = 5805;
++        (*dataArrayP)[4].id = 5820;
++        (*dataArrayP)[5].id = 5706;
++        (*dataArrayP)[6].id = 5701;
++        (*dataArrayP)[7].id = 5750;
++    }
++
++    for (i = 0 ; i < *numDataP ; i++)
++    {
++        switch ((*dataArrayP)[i].id)
++        {
++        case 5850:
++            lwm2m_data_encode_bool(targetP->state, *dataArrayP + i);
++            break;
++        case 5851:
++            lwm2m_data_encode_uint(targetP->dimmer, *dataArrayP + i);
++            break;
++        case 5852:
++            lwm2m_data_encode_uint(targetP->on_time, *dataArrayP + i);
++            break;
++        case 5805:
++            lwm2m_data_encode_float(targetP->comulative_active_power, *dataArrayP + i);
++            break;
++        case 5820:
++            lwm2m_data_encode_float(targetP->power_factor, *dataArrayP + i);
++            break;
++        case 5706:
++            lwm2m_data_encode_string(targetP->colour, *dataArrayP + i);
++            break;
++        case 5701:
++            lwm2m_data_encode_string(targetP->sensor_units, *dataArrayP + i);
++            break;
++        case 5750:
++            lwm2m_data_encode_string(targetP->application_type, *dataArrayP + i);
++            break;
++            
++        default:
++            return COAP_404_NOT_FOUND;
++        }
++    }
++
++    return COAP_205_CONTENT;
++}
++static uint8_t prv_light_control_discover(uint16_t instanceId,
++                            int * numDataP,
++                            lwm2m_data_t ** dataArrayP,
++                            lwm2m_object_t * objectP)
++{
++    int i;
++
++    if (*numDataP == 0)
++    {
++        *dataArrayP = lwm2m_data_new(LIGHT_CONTROL_INSTANCE_PARAMETERS);
++        if (*dataArrayP == NULL) return COAP_500_INTERNAL_SERVER_ERROR;
++        *numDataP = LIGHT_CONTROL_INSTANCE_PARAMETERS;
++        (*dataArrayP)[0].id = 5850;
++        (*dataArrayP)[1].id = 5851;
++        (*dataArrayP)[2].id = 5852;
++        (*dataArrayP)[3].id = 5805;
++        (*dataArrayP)[4].id = 5820;
++        (*dataArrayP)[5].id = 5706;
++        (*dataArrayP)[6].id = 5701;
++        (*dataArrayP)[7].id = 5750;
++    }
++    else
++    {
++        for (i = 0; i < *numDataP; i++)
++        {
++            switch ((*dataArrayP)[i].id)
++            {
++            case 5850:
++            case 5851:
++            case 5852:
++            case 5805:
++            case 5820:
++            case 5706:
++            case 5701:
++            case 5750:
++                break;
++            default:
++                return COAP_404_NOT_FOUND;
++            }
++        }
++    }
++
++    return COAP_205_CONTENT;
++}
++static uint8_t prv_light_control_write(uint16_t instanceId,
++                         int numData,
++                         lwm2m_data_t * dataArray,
++                         lwm2m_object_t * objectP)
++{
++    light_control_instance_t * targetP;
++    int i;
++
++    targetP = (light_control_instance_t *)lwm2m_list_find(objectP->instanceList, instanceId);
++    if (NULL == targetP) return COAP_404_NOT_FOUND;
++
++    for (i = 0 ; i < numData ; i++)
++    {
++        switch (dataArray[i].id)
++        {
++        case 5850:
++        {
++            bool value;
++
++            if (1 != lwm2m_data_decode_bool(dataArray + i, &value))
++            {
++                return COAP_400_BAD_REQUEST;
++            }
++            targetP->state = value;
++            // TODO turn on/off LED
++        }
++        break;
++        case 5851:
++        case 5852:
++        case 5805:
++        case 5820:
++        case 5706:
++        case 5701:
++        case 5750:
++            return COAP_405_METHOD_NOT_ALLOWED;
++
++        default:
++            return COAP_404_NOT_FOUND;
++        }
++    }
++
++    return COAP_204_CHANGED;
++}
++
++lwm2m_object_t * get_light_control_object(void)
++{
++    lwm2m_object_t * lightCtrlObj;
++
++    lightCtrlObj = (lwm2m_object_t *)lwm2m_malloc(sizeof(lwm2m_object_t));
++
++    if (NULL != lightCtrlObj)
++    {
++        int i;
++        light_control_instance_t * targetP;
++
++        memset(lightCtrlObj, 0, sizeof(lwm2m_object_t));
++
++        lightCtrlObj->objID = LIGHT_CONTROL_OBJECT_ID;
++
++        targetP = (light_control_instance_t *)lwm2m_malloc(sizeof(light_control_instance_t));
++        if (NULL == targetP) return NULL;
++        memset(targetP, 0, sizeof(light_control_instance_t));
++        targetP->short_id = 0;
++		targetP->state = false;
++		targetP->dimmer =100;
++		targetP->on_time = 100;
++		targetP->comulative_active_power = 0.0;
++		targetP->power_factor = 0.0;
++		targetP->colour = "RED";
++		targetP->sensor_units = "UNKNOWN";
++		targetP->application_type = "UNKNOWN";
++        lightCtrlObj->instanceList = LWM2M_LIST_ADD(lightCtrlObj->instanceList, targetP);
++
++
++        lightCtrlObj->readFunc = prv_light_control_read;
++        lightCtrlObj->discoverFunc = prv_light_control_discover;
++        lightCtrlObj->writeFunc = prv_light_control_write;
++        lightCtrlObj->executeFunc = NULL;
++        lightCtrlObj->createFunc = NULL;
++        lightCtrlObj->deleteFunc = NULL;
++    }
++
++    return lightCtrlObj;
++}
++
++void free_light_control_object(lwm2m_object_t * object)
++{
++    LWM2M_LIST_FREE(object->instanceList);
++    if (object->userData != NULL)
++    {
++        lwm2m_free(object->userData);
++        object->userData = NULL;
++    }
++    lwm2m_free(object);
++}
++
++void display_light_control_object(lwm2m_object_t * objectP)
++{
++
++}
++
