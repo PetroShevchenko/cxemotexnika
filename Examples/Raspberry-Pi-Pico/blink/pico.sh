@@ -32,7 +32,10 @@ build_project()
 
 clean_project()
 {
-    rm -rf build && print_done
+    mkdir -p tmp &&
+    mv build/generated tmp/generated &&
+    rm -rf build && mkdir -p build &&
+    mv tmp/generated build/generated && rm -d tmp && print_done
 }
 
 upgrade_firmware()
